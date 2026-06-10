@@ -1,11 +1,11 @@
+# dependencies
+node_modules/
+
 # build output
 dist/
 
-# generated types
+# Astro generated files
 .astro/
-
-# dependencies
-node_modules/
 
 # logs
 npm-debug.log*
@@ -15,10 +15,33 @@ pnpm-debug.log*
 
 # environment variables
 .env
-.env.production
+.env.local
+.env..local
 
-# macOS-specific files
+# macOS
 .DS_Store
 
-# jetbrains setting folder
+# VS Code
+.vscode/
+!.vscode/extensions.json
+!.vscode/settings.json
+
+# JetBrains
 .idea/
+
+# local AI project instructions
+agent-instructions.md
+
+# optional local notes
+notes.md
+scratchpad.md
+
+# coverage
+coverage/
+
+# temporary files
+*.tmp
+*.temp
+
+# generated images
+*.orig
