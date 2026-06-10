@@ -29,9 +29,6 @@ pnpm-debug.log*
 # JetBrains
 .idea/
 
-# local AI project instructions
-agent-instructions.md
-
 # optional local notes
 notes.md
 scratchpad.md
