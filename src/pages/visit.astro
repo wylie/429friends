@@ -6,25 +6,26 @@ import Card from '../components/Card.astro';
 import Callout from '../components/Callout.astro';
 import Gallery from '../components/Gallery.astro';
 import { siteConfig } from '../config/site';
+import { arrivalGallery, heroPhotos, parkingGallery } from '../data/photos';
 ---
 
 <Layout title="Visit" description="Practical arrival, parking, and accessibility information for visiting 429 Friends.">
-  <Hero compact eyebrow="Plan your visit" title="A little preparation makes arrival easy." description="We meet at a private residence in Hendersonville. Here is what to know about finding the backyard, getting settled, and feeling at home." imageLabel="Entry path photo" imageIcon="directions_walk" actions={[{ label: 'See upcoming dates', href: '/schedule/' }]} />
+  <Hero compact eyebrow="Plan your visit" title="A little preparation makes arrival easy." description="We meet at a private residence in Hendersonville. Here is what to know about finding the backyard, getting settled, and feeling at home." image={heroPhotos.visit} imageAlt="A wooden gate along the approach into the backyard at 429 Friends." actions={[{ label: 'See upcoming dates', href: '/schedule/' }]} />
 
-  <Section eyebrow="Finding the circle" title="From the street to your seat">
+  <Section eyebrow="Arrival gallery" title="From the street to your seat" intro="The walk in is short and quiet. Follow the right-side path, continue into the backyard, and choose any open place in the circle.">
     <div class="steps-grid">
       <article><span>1</span><h3>Park nearby</h3><p>Use an open place in the driveway or park along the street without blocking neighboring driveways.</p></article>
       <article><span>2</span><h3>Take the right-side path</h3><p>{siteConfig.meeting.arrival}</p></article>
       <article><span>3</span><h3>Choose a place</h3><p>Set your chair anywhere in the circle. Someone will be nearby to welcome you and answer questions.</p></article>
     </div>
-    <Gallery items={[
-      { label: 'Parking area photo', icon: 'local_parking', tone: 'stone' },
-      { label: 'Right-side entry path photo', icon: 'directions_walk', tone: 'leaf' },
-      { label: 'Backyard circle photo', icon: 'event_seat', tone: 'sun' },
-    ]} />
+    <Gallery items={arrivalGallery} />
   </Section>
 
-  <Section tone="soft" eyebrow="Good to know" title="Backyard basics">
+  <Section tone="soft" eyebrow="Parking gallery" title="Simple parking, short walk" intro="Parking is intentionally informal. The driveway and the street usually provide enough space, and the walk from either option is brief.">
+    <Gallery items={parkingGallery} />
+  </Section>
+
+  <Section eyebrow="Good to know" title="Backyard basics">
     <div class="card-grid card-grid--three">
       <Card title="Bring a chair" icon="chair"><p>Please bring a portable outdoor chair. A water bottle, sun hat, or light layer may also make you more comfortable.</p></Card>
       <Card title="Children belong here" icon="family_restroom"><p>Children are welcome and participate alongside adults. Childcare is not provided, and quiet movement is understood.</p></Card>

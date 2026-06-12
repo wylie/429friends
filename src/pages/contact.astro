@@ -5,13 +5,14 @@ import Section from '../components/Section.astro';
 import Card from '../components/Card.astro';
 import Callout from '../components/Callout.astro';
 import { siteConfig } from '../config/site';
+import { heroPhotos } from '../data/photos';
 ---
 
 <Layout title="Contact" description="Contact 429 Friends for the meeting address, accessibility questions, or general information.">
-  <Hero compact eyebrow="Contact" title="Questions are welcome." description="Ask for the meeting address, talk through an accessibility need, or let us know you are thinking about visiting." imageLabel="Garden gate and welcome path" imageIcon="mail" />
+  <Hero compact eyebrow="Contact" title="Questions are welcome." description="Ask for the meeting address, talk through an accessibility need, or let us know you are thinking about visiting." image={heroPhotos.contact} imageAlt="A yellow flower growing beside the wooden fence at 429 Friends." />
 
   <Section eyebrow="Get in touch" title="We would be glad to hear from you.">
-    <div class="contact-grid contact-grid--three">
+    <div class="contact-grid">
       <Card title="Email" icon="mail">
         <p><a href={`mailto:${siteConfig.contact.email}`}>{siteConfig.contact.emailLabel}</a></p>
         <p>Use email to ask for the address, check weather plans, or talk through accessibility needs.</p>
@@ -19,23 +20,6 @@ import { siteConfig } from '../config/site';
       <Card title="Meeting location" icon="location_on">
         <p>{siteConfig.address.publicLabel}</p>
         <p>{siteConfig.address.directionsNote}</p>
-      </Card>
-      <Card title="Social and updates" icon="share">
-        {siteConfig.socialLinks.length > 0 ? (
-          <ul class="link-list">
-            {siteConfig.socialLinks.map((link) => (
-              <li>
-                {link.href ? (
-                  <a href={link.href}>{link.label}</a>
-                ) : (
-                  <span>{link.label}: {link.handle}</span>
-                )}
-              </li>
-            ))}
-          </ul>
-        ) : (
-          <p>Social links will be added here when they are ready.</p>
-        )}
       </Card>
     </div>
   </Section>

@@ -4,19 +4,20 @@ import Hero from '../components/Hero.astro';
 import Section from '../components/Section.astro';
 import ResourceList from '../components/ResourceList.astro';
 import Callout from '../components/Callout.astro';
+import { heroPhotos } from '../data/photos';
 
 const resources = [
-  { title: 'About Quaker worship', description: 'A plainspoken introduction to unprogrammed Meeting for Worship and the practice of shared silence.' },
-  { title: 'Quaker history and practice', description: 'Background on the Quaker tradition, its testimonies, and the many ways Friends gather today.' },
-  { title: 'Guided practices for stillness', description: 'Simple, accessible ways to become more comfortable with silence and attentive listening.' },
-  { title: 'Friends in western North Carolina', description: 'Connections to other Quaker meetings and gatherings in the region.' },
+  { title: 'Quaker.org', description: 'A broad introduction to Quaker faith and practice, including shared silence and Meeting for Worship.', href: 'https://quaker.org/', label: 'Visit Quaker.org' },
+  { title: 'QuakerSpeak', description: 'Short videos featuring Friends talking plainly about worship, silence, ministry, and community life.', href: 'https://quakerspeak.com/', label: 'Watch QuakerSpeak' },
+  { title: 'Friends Journal', description: 'Essays, reporting, and first-person reflections from a long-running independent Quaker publication.', href: 'https://www.friendsjournal.org/', label: 'Read Friends Journal' },
+  { title: 'Find a Meeting', description: 'A directory for exploring other Quaker meetings if you are traveling or looking for a different worship time.', href: 'https://www.fgcquaker.org/find-a-meeting/', label: 'Search meetings' },
 ];
 ---
 
 <Layout title="Resources" description="Approachable resources about Quaker worship, silence, and local Friends communities.">
-  <Hero compact eyebrow="Read and explore" title="For the curious." description="You do not need homework before attending. These resources are simply places to learn more about shared silence, Quaker practice, and nearby communities." imageLabel="Books and a quiet garden seat" imageIcon="auto_stories" />
+  <Hero compact eyebrow="Read and explore" title="For the curious." description="You do not need homework before attending. These resources are simply places to learn more about shared silence, Quaker practice, and nearby communities." image={heroPhotos.resources} imageAlt="A coral honeysuckle bloom in soft garden light." />
 
-  <Section eyebrow="Resource shelf" title="Good places to begin" intro="External links will be added as this resource collection takes shape.">
+  <Section eyebrow="Resource shelf" title="Good places to begin" intro="These links offer plainspoken context without assuming you already know Quaker language or customs.">
     <ResourceList resources={resources} />
   </Section>
 

@@ -1,5 +1,7 @@
 ---
+import { Image } from 'astro:assets';
 import ImagePlaceholder from './ImagePlaceholder.astro';
+import type { ImageMetadata } from 'astro';
 
 interface Action {
   label: string;
@@ -12,12 +14,14 @@ interface Props {
   title: string;
   description: string;
   actions?: Action[];
+  image?: ImageMetadata;
+  imageAlt?: string;
   imageLabel?: string;
   imageIcon?: string;
   compact?: boolean;
 }
 
-const { eyebrow, title, description, actions = [], imageLabel, imageIcon, compact = false } = Astro.props;
+const { eyebrow, title, description, actions = [], image, imageAlt, imageLabel, imageIcon, compact = false } = Astro.props;
 ---
 
 <section class:list={['hero', compact && 'hero--compact']}>
@@ -37,9 +41,22 @@ const { eyebrow, title, description, actions = [], imageLabel, imageIcon, compac
         </div>
       )}
     </div>
-    {imageLabel && (
+    {(image || imageLabel) && (
       <div class="hero-visual reveal reveal--delay">
-        <ImagePlaceholder label={imageLabel} icon={imageIcon} aspect={compact ? 'wide' : 'portrait'} />
+        {image ? (
+          <Image
+            src={image}
+            alt={imageAlt ?? ''}
+            class="hero-photo"
+            width={1600}
+            widths={[720, 1080, 1600]}
+            sizes={compact ? '(max-width: 45rem) 100vw, 38vw' : '(max-width: 45rem) 100vw, 34vw'}
+            format="webp"
+            loading="eager"
+          />
+        ) : (
+          <ImagePlaceholder label={imageLabel} icon={imageIcon} aspect={compact ? 'wide' : 'portrait'} />
+        )}
         <div class="hero-note" aria-hidden="true">
           <span class="material-symbols-rounded">eco</span>
           Beneath the trees

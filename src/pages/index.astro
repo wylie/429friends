@@ -8,6 +8,7 @@ import Gallery from '../components/Gallery.astro';
 import NextMeetingDisplay from '../components/NextMeetingDisplay.astro';
 import CountdownToNextMeeting from '../components/CountdownToNextMeeting.astro';
 import { siteConfig } from '../config/site';
+import { backyardGallery, heroPhotos } from '../data/photos';
 ---
 
 <Layout>
@@ -15,8 +16,8 @@ import { siteConfig } from '../config/site';
     eyebrow="Hendersonville, North Carolina"
     title="A quiet hour, shared outdoors."
     description="429 Friends is a monthly backyard gathering for silence, reflection, and community. Whether you know Quaker worship well or are simply curious, there is a place for you in the circle."
-    imageLabel="Backyard gathering space photo"
-    imageIcon="forest"
+    image={heroPhotos.home}
+    imageAlt="The shaded backyard lawn at 429 Friends beneath broad tree branches."
     actions={[
       { label: 'Plan your first visit', href: '/first-time-here/' },
       { label: 'See meeting dates', href: '/schedule/', style: 'secondary' },
@@ -38,11 +39,7 @@ import { siteConfig } from '../config/site';
   </Section>
 
   <Section tone="soft" eyebrow="The setting" title="A backyard, not a sanctuary." intro="The meeting takes place at a private home beneath the trees. Seasonal details change; the welcome does not.">
-    <Gallery items={[
-      { label: 'Chairs arranged in a circle', icon: 'event_seat', tone: 'leaf' },
-      { label: 'Garden and native plants', icon: 'local_florist', tone: 'sun' },
-      { label: 'Path into the backyard', icon: 'footprint', tone: 'stone' },
-    ]} />
+    <Gallery items={backyardGallery} />
   </Section>
 
   <Section eyebrow="When we meet" title={`${siteConfig.meeting.cadence}, outdoors.`} intro={`${siteConfig.meeting.duration}, followed by ${siteConfig.meeting.communityTime.toLowerCase()}.`}>

@@ -4,10 +4,11 @@ import Hero from '../components/Hero.astro';
 import Section from '../components/Section.astro';
 import Card from '../components/Card.astro';
 import Callout from '../components/Callout.astro';
+import { heroPhotos } from '../data/photos';
 ---
 
 <Layout title="About" description="Learn how outdoor Meeting for Worship, shared silence, and spoken messages unfold at 429 Friends.">
-  <Hero compact eyebrow="About the gathering" title="Listening together, without an agenda." description="Meeting for Worship is a simple practice rooted in the Quaker tradition. We gather in a circle, become quiet, and pay attention to what rises in the stillness." imageLabel="Circle of chairs beneath the trees" imageIcon="nature_people" />
+  <Hero compact eyebrow="About the gathering" title="Listening together, without an agenda." description="Meeting for Worship is a simple practice rooted in the Quaker tradition. We gather in a circle, become quiet, and pay attention to what rises in the stillness." image={heroPhotos.about} imageAlt="A coral honeysuckle bloom in the garden at 429 Friends." />
 
   <Section eyebrow="Meeting for Worship" title="There is no program to follow." intro="No one leads the hour, delivers a sermon, or asks you to agree with a statement of belief. The shared practice is attention: becoming still enough to notice what is present.">
     <div class="card-grid card-grid--three">

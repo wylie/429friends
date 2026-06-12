@@ -5,6 +5,7 @@ import Section from '../components/Section.astro';
 import Card from '../components/Card.astro';
 import FAQ from '../components/FAQ.astro';
 import Callout from '../components/Callout.astro';
+import { heroPhotos } from '../data/photos';
 
 const questions = [
   { question: 'Do I need to be a Quaker?', answer: 'No. Quakers, people from other traditions, atheists, agnostics, spiritual seekers, and curious neighbors are all welcome.' },
@@ -18,7 +19,7 @@ const questions = [
 ---
 
 <Layout title="First Time Here" description="A reassuring guide to attending your first outdoor Meeting for Worship with 429 Friends.">
-  <Hero compact eyebrow="First time here?" title="You are not expected to know what to do." description="A first visit can feel unfamiliar, especially when the main activity is silence. We will welcome you, help you find a place, and let the hour unfold without pressure." imageLabel="A welcoming place in the circle" imageIcon="event_seat" actions={[{ label: 'Get practical directions', href: '/visit/' }]} />
+  <Hero compact eyebrow="First time here?" title="You are not expected to know what to do." description="A first visit can feel unfamiliar, especially when the main activity is silence. We will welcome you, help you find a place, and let the hour unfold without pressure." image={heroPhotos.firstTime} imageAlt="Coral honeysuckle near the meeting space at 429 Friends." actions={[{ label: 'Get practical directions', href: '/visit/' }]} />
 
   <Section eyebrow="What to expect" title="Simple, quiet, and unhurried.">
     <div class="card-grid card-grid--three">

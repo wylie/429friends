@@ -1,12 +1,27 @@
 ---
-import ImagePlaceholder from './ImagePlaceholder.astro';
-interface Item { label: string; icon?: string; tone?: 'leaf' | 'sun' | 'stone'; }
-interface Props { items: Item[]; }
+import { Image } from 'astro:assets';
+import type { PhotoItem } from '../data/photos';
+
+interface Props {
+  items: PhotoItem[];
+}
 const { items } = Astro.props;
 ---
 
 <div class="gallery">
   {items.map((item, index) => (
-    <ImagePlaceholder label={item.label} icon={item.icon} tone={item.tone} aspect={index === 0 ? 'wide' : 'square'} />
+    <figure class:list={['gallery-figure', index === 0 && 'gallery-figure--wide']}>
+      <Image
+        src={item.src}
+        alt={item.alt}
+        class="gallery-image"
+        width={index === 0 ? 1400 : 900}
+        widths={[600, 900, 1400]}
+        sizes={index === 0 ? '(max-width: 45rem) 100vw, 55vw' : '(max-width: 45rem) 100vw, 22vw'}
+        loading={index === 0 ? 'eager' : 'lazy'}
+        format="webp"
+      />
+      <figcaption>{item.caption}</figcaption>
+    </figure>
   ))}
 </div>

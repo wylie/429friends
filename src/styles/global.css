@@ -142,11 +142,20 @@ p:last-child { margin-bottom: 0; }
 .hero-visual { position: relative; }
 .hero-visual::before { position: absolute; inset: -1.25rem 1.5rem 1.5rem -1.25rem; z-index: -1; border: 1px solid var(--moss); border-radius: 46% 54% 40% 60% / 45% 41% 59% 55%; content: ''; transform: rotate(-4deg); }
 .hero-visual .image-placeholder { border-radius: 48% 52% 42% 58% / 45% 43% 57% 55%; }
+.hero-photo {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  border: 1px solid rgba(23, 60, 43, 0.12);
+  border-radius: 48% 52% 42% 58% / 45% 43% 57% 55%;
+  box-shadow: var(--shadow);
+}
 .hero-note { position: absolute; right: -1.25rem; bottom: 2rem; display: flex; align-items: center; gap: 0.45rem; padding: 0.65rem 0.9rem; border-radius: 2rem; background: var(--paper); box-shadow: var(--shadow); font-size: 0.75rem; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; transform: rotate(3deg); }
 .hero-note .material-symbols-rounded { color: var(--forest); }
 .hero--compact { padding-block: clamp(3.5rem, 7vw, 6rem); }
 .hero--compact h1 { font-size: clamp(3rem, 6vw, 5.4rem); }
 .hero--compact .hero-grid { grid-template-columns: minmax(0, 1.2fr) minmax(18rem, 0.55fr); }
+.hero--compact .hero-photo { aspect-ratio: 16 / 11; }
 
 .eyebrow { margin-bottom: 1rem; color: var(--clay); font-size: 0.76rem; font-weight: 800; letter-spacing: 0.16em; text-transform: uppercase; }
 
@@ -305,7 +314,29 @@ p:last-child { margin-bottom: 0; }
 .placeholder-label { position: absolute; right: 1rem; bottom: 1rem; left: 1rem; z-index: 2; display: flex; align-items: center; justify-content: center; gap: 0.45rem; padding: 0.7rem 0.9rem; border: 1px dashed rgba(255, 255, 255, 0.6); border-radius: 2rem; color: white; background: rgba(23, 60, 43, 0.6); font-size: 0.75rem; font-weight: 800; letter-spacing: 0.04em; text-align: center; text-transform: uppercase; backdrop-filter: blur(5px); }
 
 .gallery { display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 1rem; }
-.gallery .image-placeholder { border-radius: var(--radius); }
+.gallery-figure {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin: 0;
+}
+.gallery-image {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  border: 1px solid rgba(23, 60, 43, 0.12);
+  border-radius: var(--radius);
+  background: var(--sage);
+  box-shadow: var(--shadow);
+}
+.gallery-figure--wide .gallery-image {
+  aspect-ratio: 16 / 10;
+}
+.gallery figcaption {
+  color: var(--ink-soft);
+  font-size: 0.88rem;
+}
 
 .timeline { max-width: 56rem; margin: 0; padding: 0; list-style: none; }
 .timeline li { display: grid; grid-template-columns: 5rem 1fr; gap: 1.5rem; padding: 0 0 2.5rem; }
@@ -457,6 +488,13 @@ p:last-child { margin-bottom: 0; }
   list-style: none;
   font-size: 0.8rem;
 }
+.footer-socials a {
+  color: rgba(255, 255, 255, 0.78);
+  text-decoration: none;
+}
+.footer-socials a:hover {
+  color: var(--sun-soft);
+}
 .site-footer h2 { margin-bottom: 1rem; color: white; font-family: var(--font-body); font-size: 0.75rem; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; }
 .site-footer nav { display: flex; flex-direction: column; align-items: flex-start; gap: 0.55rem; }
 .site-footer nav a { color: rgba(255, 255, 255, 0.78); text-decoration: none; }
@@ -493,6 +531,7 @@ p:last-child { margin-bottom: 0; }
   .hero-grid, .hero--compact .hero-grid { grid-template-columns: 1fr; }
   .hero-visual { max-width: 28rem; }
   .hero-visual .image-placeholder { aspect-ratio: 16 / 11; min-height: 16rem; border-radius: var(--radius-lg); }
+  .hero-photo { aspect-ratio: 16 / 11; border-radius: var(--radius-lg); }
   .hero-visual::before { inset: -0.75rem 0.75rem 0.75rem -0.75rem; border-radius: var(--radius-lg); }
   .hero-note { right: 0; bottom: 1rem; }
   .section { padding-block: 4rem; }
@@ -501,7 +540,7 @@ p:last-child { margin-bottom: 0; }
   .steps-grid { grid-template-columns: 1fr; }
   .gallery { grid-template-columns: 1fr; }
   .gallery > :first-child { grid-column: auto; }
-  .gallery .image-placeholder { aspect-ratio: 16 / 10; }
+  .gallery-image { aspect-ratio: 16 / 10; }
   .callout { grid-template-columns: 1fr; }
   .schedule-table-wrap { display: none; }
   .schedule-card-list { display: block; }
