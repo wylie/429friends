@@ -1,7 +1,7 @@
 ---
 import { getNextMeeting } from '../lib/meetings';
 
-const meeting = getNextMeeting();
+const meeting = await getNextMeeting();
 ---
 
 <div class="countdown-island card" data-countdown-root data-starts-at={meeting?.startsAt ?? ''}>

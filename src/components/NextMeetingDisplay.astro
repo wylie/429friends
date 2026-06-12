@@ -1,7 +1,7 @@
 ---
 import { getNextMeeting, formatMeetingDateTime, getMeetingStatusLabel } from '../lib/meetings';
 
-const meeting = getNextMeeting();
+const meeting = await getNextMeeting();
 ---
 
 <div class="next-meeting-island card" data-next-meeting={meeting ? '' : 'empty'}>

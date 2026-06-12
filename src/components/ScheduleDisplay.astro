@@ -1,11 +1,13 @@
 ---
-import { meetingSchedule } from '../data/meetings';
 import {
   formatMeetingDate,
   formatMeetingMonth,
   formatMeetingDay,
   getMeetingStatusLabel,
+  getMeetingSchedule,
 } from '../lib/meetings';
+
+const meetingSchedule = await getMeetingSchedule();
 ---
 
 <div class="schedule-display">

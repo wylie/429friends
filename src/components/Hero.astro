@@ -43,20 +43,22 @@ const { eyebrow, title, description, actions = [], image, imageAlt, imageLabel, 
     </div>
     {(image || imageLabel) && (
       <div class="hero-visual reveal reveal--delay">
-        {image ? (
-          <Image
-            src={image}
-            alt={imageAlt ?? ''}
-            class="hero-photo"
-            width={1600}
-            widths={[720, 1080, 1600]}
-            sizes={compact ? '(max-width: 45rem) 100vw, 38vw' : '(max-width: 45rem) 100vw, 34vw'}
-            format="webp"
-            loading="eager"
-          />
-        ) : (
-          <ImagePlaceholder label={imageLabel} icon={imageIcon} aspect={compact ? 'wide' : 'portrait'} />
-        )}
+        <div class:list={['hero-media-frame', compact && 'hero-media-frame--compact']}>
+          {image ? (
+            <Image
+              src={image}
+              alt={imageAlt ?? ''}
+              class="hero-photo"
+              width={1600}
+              widths={[720, 1080, 1600]}
+              sizes={compact ? '(max-width: 45rem) 100vw, 38vw' : '(max-width: 45rem) 100vw, 34vw'}
+              format="webp"
+              loading="eager"
+            />
+          ) : (
+            <ImagePlaceholder label={imageLabel} icon={imageIcon} aspect={compact ? 'wide' : 'portrait'} />
+          )}
+        </div>
         <div class="hero-note" aria-hidden="true">
           <span class="material-symbols-rounded">eco</span>
           Beneath the trees

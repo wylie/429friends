@@ -9,8 +9,10 @@ import { heroPhotos } from '../data/photos';
 
 const questions = [
   { question: 'Do I need to be a Quaker?', answer: 'No. Quakers, people from other traditions, atheists, agnostics, spiritual seekers, and curious neighbors are all welcome.' },
+  { question: 'What is a Silent Meeting?', answer: 'Silent Meeting is a plain-language way to describe what Quakers call Meeting for Worship. The group settles into shared silence together. There is no sermon, pastor, or planned service, and anyone may remain silent the entire time.' },
   { question: 'What if I have never sat in silence before?', answer: 'That is completely fine. There is no right way to experience the quiet. You can notice your breath, listen to the sounds outdoors, reflect, pray, or simply let your thoughts come and go.' },
   { question: 'Will I be expected to speak?', answer: 'No. Most people remain silent throughout the meeting. If you do feel moved to share something, leave some quiet space after another person has spoken and keep the message brief.' },
+  { question: 'Is this what Quakers call an unprogrammed meeting?', answer: 'Yes. Quakers sometimes use the term unprogrammed meeting to mean there is no prepared order of worship. In plain terms, it means no sermon, no pastor leading the hour, and no planned service to follow.' },
   { question: 'What should I wear?', answer: 'Wear comfortable, weather-appropriate clothing. This is an informal backyard gathering, not a service with a dress code.' },
   { question: 'Can I bring my child?', answer: 'Yes. Children join the gathering alongside adults. There is no separate childcare, and we understand that children may need to move or make some sound.' },
   { question: 'What happens if I arrive late?', answer: 'Enter along the right side of the house, continue quietly into the backyard, and join the circle with as little disruption as possible.' },
@@ -18,10 +20,10 @@ const questions = [
 ];
 ---
 
-<Layout title="First Time Here" description="A reassuring guide to attending your first outdoor Meeting for Worship with 429 Friends.">
-  <Hero compact eyebrow="First time here?" title="You are not expected to know what to do." description="A first visit can feel unfamiliar, especially when the main activity is silence. We will welcome you, help you find a place, and let the hour unfold without pressure." image={heroPhotos.firstTime} imageAlt="Coral honeysuckle near the meeting space at 429 Friends." actions={[{ label: 'Get practical directions', href: '/visit/' }]} />
+<Layout title="First Time Here" description="A reassuring guide to attending your first outdoor Silent Meeting with 429 Friends.">
+  <Hero compact eyebrow="First time here?" title="You are not expected to know what to do." description="A first visit can feel unfamiliar, especially when the main activity is shared silence. We will welcome you, help you find a place, and let the hour unfold without pressure." image={heroPhotos.firstTime} imageAlt="Coral honeysuckle near the meeting space at 429 Friends." actions={[{ label: 'Get practical directions', href: '/visit/' }]} />
 
-  <Section eyebrow="What to expect" title="Simple, quiet, and unhurried.">
+  <Section eyebrow="What to expect" title="Simple, quiet, and unhurried." intro="Friends often call this practice Meeting for Worship. If that phrase is new to you, you can think of it as a Silent Meeting held outdoors in a backyard circle.">
     <div class="card-grid card-grid--three">
       <Card title="Before" icon="waving_hand"><p>Arrive a few minutes early if you can. Bring a chair, meet a host, and choose any open place in the circle.</p></Card>
       <Card title="During" icon="quiet_time"><p>Let the silence be what it is. You may hear birds, neighbors, children, spoken messages, and ordinary backyard sounds.</p></Card>
