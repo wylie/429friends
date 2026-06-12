@@ -11,7 +11,7 @@ const { title, icon, href, linkLabel = 'Learn more' } = Astro.props;
 
 <article class="card">
   {icon && <span class="card-icon material-symbols-rounded" aria-hidden="true">{icon}</span>}
-  <h3>{title}</h3>
+  <h3 class="card-title">{title}</h3>
   <div class="card-content"><slot /></div>
   {href && (
     <a class="text-link" href={href}>
