@@ -1,0 +1,36 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Hero from '../components/Hero.astro';
+import Section from '../components/Section.astro';
+import Card from '../components/Card.astro';
+import Callout from '../components/Callout.astro';
+import { siteConfig } from '../config/site';
+---
+
+<Layout title="Contact" description="Contact 429 Friends for the meeting address, accessibility questions, or general information.">
+  <Hero compact eyebrow="Contact" title="Questions are welcome." description="Ask for the meeting address, talk through an accessibility need, or let us know you are thinking about visiting. A contact method will be posted here soon." imageLabel="Garden gate and welcome path" imageIcon="mail" />
+
+  <Section eyebrow="Get in touch" title="We would be glad to hear from you.">
+    <div class="contact-grid">
+      <Card title="Email" icon="mail">
+        {siteConfig.contact.email ? <p><a href={`mailto:${siteConfig.contact.email}`}>{siteConfig.contact.email}</a></p> : <p><strong>{siteConfig.contact.emailLabel}</strong></p>}
+        <p>We are preparing a public contact address for visitor questions.</p>
+      </Card>
+      <Card title="Meeting location" icon="location_on">
+        <p>{siteConfig.address.publicLabel}</p>
+        <p>{siteConfig.address.directionsNote}</p>
+      </Card>
+    </div>
+  </Section>
+
+  <Section tone="soft" narrow>
+    <Callout title="What can we help with?" icon="help" tone="sun">
+      <ul class="check-list">
+        <li><span class="material-symbols-rounded" aria-hidden="true">check</span>Getting the full address</li>
+        <li><span class="material-symbols-rounded" aria-hidden="true">check</span>Planning for mobility or sensory needs</li>
+        <li><span class="material-symbols-rounded" aria-hidden="true">check</span>Checking weather plans</li>
+        <li><span class="material-symbols-rounded" aria-hidden="true">check</span>Asking about Meeting for Worship</li>
+      </ul>
+    </Callout>
+  </Section>
+</Layout>

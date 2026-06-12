@@ -1,0 +1,12 @@
+---
+import ImagePlaceholder from './ImagePlaceholder.astro';
+interface Item { label: string; icon?: string; tone?: 'leaf' | 'sun' | 'stone'; }
+interface Props { items: Item[]; }
+const { items } = Astro.props;
+---
+
+<div class="gallery">
+  {items.map((item, index) => (
+    <ImagePlaceholder label={item.label} icon={item.icon} tone={item.tone} aspect={index === 0 ? 'wide' : 'square'} />
+  ))}
+</div>

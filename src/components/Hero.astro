@@ -1,0 +1,50 @@
+---
+import ImagePlaceholder from './ImagePlaceholder.astro';
+
+interface Action {
+  label: string;
+  href: string;
+  style?: 'primary' | 'secondary';
+}
+
+interface Props {
+  eyebrow?: string;
+  title: string;
+  description: string;
+  actions?: Action[];
+  imageLabel?: string;
+  imageIcon?: string;
+  compact?: boolean;
+}
+
+const { eyebrow, title, description, actions = [], imageLabel, imageIcon, compact = false } = Astro.props;
+---
+
+<section class:list={['hero', compact && 'hero--compact']}>
+  <div class="container hero-grid">
+    <div class="hero-copy reveal">
+      {eyebrow && <p class="eyebrow">{eyebrow}</p>}
+      <h1>{title}</h1>
+      <p class="hero-description">{description}</p>
+      {actions.length > 0 && (
+        <div class="button-row">
+          {actions.map((action) => (
+            <a class:list={['button', action.style === 'secondary' && 'button--secondary']} href={action.href}>
+              {action.label}
+              <span class="material-symbols-rounded" aria-hidden="true">arrow_forward</span>
+            </a>
+          ))}
+        </div>
+      )}
+    </div>
+    {imageLabel && (
+      <div class="hero-visual reveal reveal--delay">
+        <ImagePlaceholder label={imageLabel} icon={imageIcon} aspect={compact ? 'wide' : 'portrait'} />
+        <div class="hero-note" aria-hidden="true">
+          <span class="material-symbols-rounded">eco</span>
+          Beneath the trees
+        </div>
+      </div>
+    )}
+  </div>
+</section>

@@ -1,0 +1,41 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Hero from '../components/Hero.astro';
+import Section from '../components/Section.astro';
+import Card from '../components/Card.astro';
+import FAQ from '../components/FAQ.astro';
+import Callout from '../components/Callout.astro';
+
+const questions = [
+  { question: 'Do I need to be a Quaker?', answer: 'No. Quakers, people from other traditions, atheists, agnostics, spiritual seekers, and curious neighbors are all welcome.' },
+  { question: 'What if I have never sat in silence before?', answer: 'That is completely fine. There is no right way to experience the quiet. You can notice your breath, listen to the sounds outdoors, reflect, pray, or simply let your thoughts come and go.' },
+  { question: 'Will I be expected to speak?', answer: 'No. Most people remain silent throughout the meeting. If you do feel moved to share something, leave some quiet space after another person has spoken and keep the message brief.' },
+  { question: 'What should I wear?', answer: 'Wear comfortable, weather-appropriate clothing. This is an informal backyard gathering, not a service with a dress code.' },
+  { question: 'Can I bring my child?', answer: 'Yes. Children join the gathering alongside adults. There is no separate childcare, and we understand that children may need to move or make some sound.' },
+  { question: 'What happens if I arrive late?', answer: 'Enter along the right side of the house, continue quietly into the backyard, and join the circle with as little disruption as possible.' },
+  { question: 'Can I bring my dog?', answer: 'Please leave dogs at home. Meatball, the dog who lives at the meeting place, may occasionally be present.' },
+];
+---
+
+<Layout title="First Time Here" description="A reassuring guide to attending your first outdoor Meeting for Worship with 429 Friends.">
+  <Hero compact eyebrow="First time here?" title="You are not expected to know what to do." description="A first visit can feel unfamiliar, especially when the main activity is silence. We will welcome you, help you find a place, and let the hour unfold without pressure." imageLabel="A welcoming place in the circle" imageIcon="event_seat" actions={[{ label: 'Get practical directions', href: '/visit/' }]} />
+
+  <Section eyebrow="What to expect" title="Simple, quiet, and unhurried.">
+    <div class="card-grid card-grid--three">
+      <Card title="Before" icon="waving_hand"><p>Arrive a few minutes early if you can. Bring a chair, meet a host, and choose any open place in the circle.</p></Card>
+      <Card title="During" icon="quiet_time"><p>Let the silence be what it is. You may hear birds, neighbors, children, spoken messages, and ordinary backyard sounds.</p></Card>
+      <Card title="After" icon="forum"><p>The meeting closes with a greeting. Stay for conversation, ask questions, or head out quietly—whatever feels right.</p></Card>
+    </div>
+  </Section>
+
+  <Section tone="soft" eyebrow="Questions are welcome" title="Frequently asked questions" intro="These are the things first-time visitors most often want to know.">
+    <FAQ items={questions} />
+  </Section>
+
+  <Section narrow>
+    <Callout title="There is room for uncertainty." icon="favorite" tone="sun">
+      <p>You do not need to decide what the silence means before you arrive. Come with your questions, your restlessness, or your curiosity.</p>
+      <a class="button" href="/schedule/">Choose a Sunday<span class="material-symbols-rounded" aria-hidden="true">arrow_forward</span></a>
+    </Callout>
+  </Section>
+</Layout>

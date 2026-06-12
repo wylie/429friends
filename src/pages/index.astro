@@ -1,11 +1,55 @@
 ---
-import Welcome from '../components/Welcome.astro';
 import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import Hero from '../components/Hero.astro';
+import Section from '../components/Section.astro';
+import Card from '../components/Card.astro';
+import Callout from '../components/Callout.astro';
+import Gallery from '../components/Gallery.astro';
+import { siteConfig } from '../config/site';
 ---
 
 <Layout>
-	<Welcome />
+  <Hero
+    eyebrow="Hendersonville, North Carolina"
+    title="A quiet hour, shared outdoors."
+    description="429 Friends is a monthly backyard gathering for silence, reflection, and community. Whether you know Quaker worship well or are simply curious, there is a place for you in the circle."
+    imageLabel="Backyard gathering space photo"
+    imageIcon="forest"
+    actions={[
+      { label: 'Plan your first visit', href: '/first-time-here/' },
+      { label: 'See meeting dates', href: '/schedule/', style: 'secondary' },
+    ]}
+  />
+
+  <Section eyebrow="What happens here" title="Stillness can be shared." intro="We gather without a program or a leader. Together, we settle into silence and make room to listen—to ourselves, to one another, and to what matters most.">
+    <div class="card-grid card-grid--three">
+      <Card title="Arrive as you are" icon="diversity_1" href="/visit/" linkLabel="How to visit">
+        <p>No special knowledge, beliefs, or preparation are required. Bring a chair and join the circle.</p>
+      </Card>
+      <Card title="Share the silence" icon="quiet_time" href="/about/" linkLabel="About the meeting">
+        <p>We sit together for about an hour. Anyone may speak if something feels important to share.</p>
+      </Card>
+      <Card title="Stay and connect" icon="local_cafe">
+        <p>After worship, the quiet gives way to easy conversation and time to know our neighbors.</p>
+      </Card>
+    </div>
+  </Section>
+
+  <Section tone="soft" eyebrow="The setting" title="A backyard, not a sanctuary." intro="The meeting takes place at a private home beneath the trees. Seasonal details change; the welcome does not.">
+    <Gallery items={[
+      { label: 'Chairs arranged in a circle', icon: 'event_seat', tone: 'leaf' },
+      { label: 'Garden and native plants', icon: 'local_florist', tone: 'sun' },
+      { label: 'Path into the backyard', icon: 'footprint', tone: 'stone' },
+    ]} />
+  </Section>
+
+  <Section narrow>
+    <Callout title={`We meet the ${siteConfig.meeting.cadence.toLowerCase()}.`} icon="calendar_month" tone="sun">
+      <p>{siteConfig.meeting.duration}, followed by informal community time. Children are welcome alongside adults.</p>
+      <div class="button-row">
+        <a class="button" href="/schedule/">View the schedule<span class="material-symbols-rounded" aria-hidden="true">arrow_forward</span></a>
+        <a class="button button--secondary" href="/contact/">Ask a question</a>
+      </div>
+    </Callout>
+  </Section>
 </Layout>

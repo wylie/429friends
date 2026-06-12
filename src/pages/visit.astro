@@ -1,0 +1,44 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Hero from '../components/Hero.astro';
+import Section from '../components/Section.astro';
+import Card from '../components/Card.astro';
+import Callout from '../components/Callout.astro';
+import Gallery from '../components/Gallery.astro';
+import { siteConfig } from '../config/site';
+---
+
+<Layout title="Visit" description="Practical arrival, parking, and accessibility information for visiting 429 Friends.">
+  <Hero compact eyebrow="Plan your visit" title="A little preparation makes arrival easy." description="We meet at a private residence in Hendersonville. Here is what to know about finding the backyard, getting settled, and feeling at home." imageLabel="Entry path photo" imageIcon="directions_walk" actions={[{ label: 'See upcoming dates', href: '/schedule/' }]} />
+
+  <Section eyebrow="Finding the circle" title="From the street to your seat">
+    <div class="steps-grid">
+      <article><span>1</span><h3>Park nearby</h3><p>Use an open place in the driveway or park along the street without blocking neighboring driveways.</p></article>
+      <article><span>2</span><h3>Take the right-side path</h3><p>{siteConfig.meeting.arrival}</p></article>
+      <article><span>3</span><h3>Choose a place</h3><p>Set your chair anywhere in the circle. Someone will be nearby to welcome you and answer questions.</p></article>
+    </div>
+    <Gallery items={[
+      { label: 'Parking area photo', icon: 'local_parking', tone: 'stone' },
+      { label: 'Right-side entry path photo', icon: 'directions_walk', tone: 'leaf' },
+      { label: 'Backyard circle photo', icon: 'event_seat', tone: 'sun' },
+    ]} />
+  </Section>
+
+  <Section tone="soft" eyebrow="Good to know" title="Backyard basics">
+    <div class="card-grid card-grid--three">
+      <Card title="Bring a chair" icon="chair"><p>Please bring a portable outdoor chair. A water bottle, sun hat, or light layer may also make you more comfortable.</p></Card>
+      <Card title="Children belong here" icon="family_restroom"><p>Children are welcome and participate alongside adults. Childcare is not provided, and quiet movement is understood.</p></Card>
+      <Card title="Leave dogs at home" icon="pets"><p>Please do not bring dogs. The resident dog, Meatball, may occasionally make an appearance.</p></Card>
+      <Card title="Dress for outside" icon="partly_cloudy_day"><p>Wear whatever feels comfortable for the season and ground conditions. The gathering is relaxed and informal.</p></Card>
+      <Card title="Respect the property" icon="cottage"><p>Please remain in the gathering areas and help us care for the plants, paths, neighbors, and private home.</p></Card>
+      <Card title="Arriving late is okay" icon="schedule"><p>Continue into the backyard quietly, set down your chair with care, and join the circle when you are ready.</p></Card>
+    </div>
+  </Section>
+
+  <Section narrow>
+    <Callout title="Need the address or have an access question?" icon="location_on" tone="sun">
+      <p>{siteConfig.address.directionsNote} Reach out before your visit so we can help you plan.</p>
+      <a class="button" href="/contact/">Contact us<span class="material-symbols-rounded" aria-hidden="true">arrow_forward</span></a>
+    </Callout>
+  </Section>
+</Layout>

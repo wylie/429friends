@@ -1,0 +1,19 @@
+---
+interface Resource { title: string; description: string; href?: string; label?: string; }
+interface Props { resources: Resource[]; }
+const { resources } = Astro.props;
+---
+
+<div class="resource-list">
+  {resources.map((resource) => (
+    <article class="resource-item">
+      <span class="material-symbols-rounded" aria-hidden="true">menu_book</span>
+      <div><h3>{resource.title}</h3><p>{resource.description}</p></div>
+      {resource.href ? (
+        <a href={resource.href} target="_blank" rel="noreferrer">
+          {resource.label ?? 'Visit resource'}<span class="material-symbols-rounded" aria-hidden="true">open_in_new</span>
+        </a>
+      ) : <span class="resource-status">Link coming soon</span>}
+    </article>
+  ))}
+</div>

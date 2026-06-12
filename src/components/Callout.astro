@@ -1,0 +1,13 @@
+---
+interface Props {
+  title: string;
+  icon?: string;
+  tone?: 'leaf' | 'sun' | 'clay';
+}
+const { title, icon = 'info', tone = 'leaf' } = Astro.props;
+---
+
+<aside class:list={['callout', `callout--${tone}`]}>
+  <span class="material-symbols-rounded" aria-hidden="true">{icon}</span>
+  <div><h2>{title}</h2><slot /></div>
+</aside>

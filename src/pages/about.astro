@@ -1,0 +1,35 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Hero from '../components/Hero.astro';
+import Section from '../components/Section.astro';
+import Card from '../components/Card.astro';
+import Callout from '../components/Callout.astro';
+---
+
+<Layout title="About" description="Learn how outdoor Meeting for Worship, shared silence, and spoken messages unfold at 429 Friends.">
+  <Hero compact eyebrow="About the gathering" title="Listening together, without an agenda." description="Meeting for Worship is a simple practice rooted in the Quaker tradition. We gather in a circle, become quiet, and pay attention to what rises in the stillness." imageLabel="Circle of chairs beneath the trees" imageIcon="nature_people" />
+
+  <Section eyebrow="Meeting for Worship" title="There is no program to follow." intro="No one leads the hour, delivers a sermon, or asks you to agree with a statement of belief. The shared practice is attention: becoming still enough to notice what is present.">
+    <div class="card-grid card-grid--three">
+      <Card title="Settling" icon="self_improvement"><p>At first, the silence may feel unfamiliar. There is nothing to achieve. Let your mind wander and return at its own pace.</p></Card>
+      <Card title="Listening" icon="hearing"><p>Some people reflect, pray, notice the natural world, or simply rest. Each person finds their own way into the quiet.</p></Card>
+      <Card title="Sharing" icon="record_voice_over"><p>If someone feels moved to speak, they may stand and offer a short message. Most meetings include plenty of silence.</p></Card>
+    </div>
+  </Section>
+
+  <Section tone="soft" eyebrow="The shape of an hour" title="What the meeting feels like">
+    <ol class="timeline">
+      <li><span>01</span><div><h3>We gather</h3><p>Choose a place in the circle and get comfortable. A host welcomes newcomers before the meeting begins.</p></div></li>
+      <li><span>02</span><div><h3>We become quiet</h3><p>The group settles naturally into silence. There is no signal that you need to watch for and no prescribed posture.</p></div></li>
+      <li><span>03</span><div><h3>We listen</h3><p>The quiet continues for about 45–60 minutes. Spoken messages may arise, with space between them.</p></div></li>
+      <li><span>04</span><div><h3>We reconnect</h3><p>The meeting closes with a simple greeting. Introductions and unhurried conversation follow.</p></div></li>
+    </ol>
+  </Section>
+
+  <Section narrow>
+    <Callout title="You do not have to call yourself a Quaker." icon="waving_hand">
+      <p>People of many beliefs—and no particular belief—can find meaning in shared silence. Curiosity and respect are enough.</p>
+      <a class="text-link" href="/first-time-here/">Read the first-time visitor guide<span class="material-symbols-rounded" aria-hidden="true">arrow_forward</span></a>
+    </Callout>
+  </Section>
+</Layout>

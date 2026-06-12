@@ -1,0 +1,29 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Hero from '../components/Hero.astro';
+import Section from '../components/Section.astro';
+import ResourceList from '../components/ResourceList.astro';
+import Callout from '../components/Callout.astro';
+
+const resources = [
+  { title: 'About Quaker worship', description: 'A plainspoken introduction to unprogrammed Meeting for Worship and the practice of shared silence.' },
+  { title: 'Quaker history and practice', description: 'Background on the Quaker tradition, its testimonies, and the many ways Friends gather today.' },
+  { title: 'Guided practices for stillness', description: 'Simple, accessible ways to become more comfortable with silence and attentive listening.' },
+  { title: 'Friends in western North Carolina', description: 'Connections to other Quaker meetings and gatherings in the region.' },
+];
+---
+
+<Layout title="Resources" description="Approachable resources about Quaker worship, silence, and local Friends communities.">
+  <Hero compact eyebrow="Read and explore" title="For the curious." description="You do not need homework before attending. These resources are simply places to learn more about shared silence, Quaker practice, and nearby communities." imageLabel="Books and a quiet garden seat" imageIcon="auto_stories" />
+
+  <Section eyebrow="Resource shelf" title="Good places to begin" intro="External links will be added as this resource collection takes shape.">
+    <ResourceList resources={resources} />
+  </Section>
+
+  <Section tone="soft" narrow>
+    <Callout title="Experience is often the clearest explanation." icon="nature_people">
+      <p>Reading can provide context, but you are also welcome to simply join us and see how the meeting feels.</p>
+      <a class="text-link" href="/first-time-here/">Start with the visitor guide<span class="material-symbols-rounded" aria-hidden="true">arrow_forward</span></a>
+    </Callout>
+  </Section>
+</Layout>

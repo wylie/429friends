@@ -1,0 +1,30 @@
+---
+import { siteConfig } from '../config/site';
+const year = new Date().getFullYear();
+---
+
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div>
+      <a class="brand footer-brand" href="/">
+        <span class="brand-mark" aria-hidden="true"><span></span><span></span><span></span></span>
+        <span><strong>{siteConfig.name}</strong><small>{siteConfig.tagline}</small></span>
+      </a>
+      <p>{siteConfig.locationLine}</p>
+    </div>
+    <div>
+      <h2>Come as you are</h2>
+      <p>All backgrounds and beliefs are welcome. No experience with Quaker worship is needed.</p>
+    </div>
+    <nav aria-label="Footer navigation">
+      <h2>Explore</h2>
+      <a href="/visit/">Plan a visit</a>
+      <a href="/schedule/">Meeting dates</a>
+      <a href="/contact/">Get in touch</a>
+    </nav>
+  </div>
+  <div class="container footer-bottom">
+    <p>&copy; {year} {siteConfig.name}</p>
+    <p>Gathering outdoors in Hendersonville, NC</p>
+  </div>
+</footer>

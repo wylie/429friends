@@ -1,0 +1,23 @@
+---
+import { meetingDates } from '../data/meetings';
+
+const formatMonth = (date: string) => new Intl.DateTimeFormat('en-US', { month: 'short', timeZone: 'UTC' }).format(new Date(date));
+const formatDay = (date: string) => new Intl.DateTimeFormat('en-US', { day: 'numeric', timeZone: 'UTC' }).format(new Date(date));
+const formatFull = (date: string) => new Intl.DateTimeFormat('en-US', { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric', timeZone: 'UTC' }).format(new Date(date));
+---
+
+<div class="schedule-grid">
+  {meetingDates.map((meeting, index) => (
+    <article class:list={['meeting-date', index === 0 && 'meeting-date--next']}>
+      <time datetime={meeting.date}>
+        <span>{formatMonth(meeting.date)}</span>
+        <strong>{formatDay(meeting.date)}</strong>
+      </time>
+      <div>
+        {index === 0 && <p class="meeting-label">Next gathering</p>}
+        <h3>{formatFull(meeting.date)}</h3>
+        <p>{meeting.note ?? 'Outdoor Meeting for Worship'}</p>
+      </div>
+    </article>
+  ))}
+</div>
