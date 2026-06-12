@@ -1,0 +1,60 @@
+---
+import { getNextMeeting } from '../lib/meetings';
+
+const meeting = getNextMeeting();
+---
+
+<div class="countdown-island card" data-countdown-root data-starts-at={meeting?.startsAt ?? ''}>
+  <p class="eyebrow">Countdown</p>
+  <h3>Time until the next circle begins</h3>
+  {meeting ? (
+    <>
+      <div class="countdown-grid" aria-live="polite">
+        <div><span data-countdown-days>0</span><small>Days</small></div>
+        <div><span data-countdown-hours>0</span><small>Hours</small></div>
+        <div><span data-countdown-minutes>0</span><small>Minutes</small></div>
+      </div>
+      <p class="countdown-note" data-countdown-label>The next meeting is on the way.</p>
+    </>
+  ) : (
+    <p class="countdown-note">A future meeting will appear here once it is scheduled.</p>
+  )}
+</div>
+
+<script>
+  for (const root of document.querySelectorAll('[data-countdown-root]')) {
+    if (!(root instanceof HTMLElement)) continue;
+
+    const startsAt = root.dataset.startsAt;
+    const days = root.querySelector('[data-countdown-days]');
+    const hours = root.querySelector('[data-countdown-hours]');
+    const minutes = root.querySelector('[data-countdown-minutes]');
+    const label = root.querySelector('[data-countdown-label]');
+
+    if (!startsAt || !days || !hours || !minutes || !label) continue;
+
+    const target = new Date(startsAt).getTime();
+
+    const updateCountdown = () => {
+      const diff = Math.max(0, target - Date.now());
+      const dayValue = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hourValue = Math.floor((diff / (1000 * 60 * 60)) % 24);
+      const minuteValue = Math.floor((diff / (1000 * 60)) % 60);
+
+      days.textContent = String(dayValue);
+      hours.textContent = String(hourValue);
+      minutes.textContent = String(minuteValue);
+
+      if (diff === 0) {
+        label.textContent = 'The meeting is underway or has just begun.';
+      } else if (dayValue > 0) {
+        label.textContent = `${dayValue} day${dayValue === 1 ? '' : 's'} until worship begins.`;
+      } else {
+        label.textContent = 'This meeting begins today.';
+      }
+    };
+
+    updateCountdown();
+    window.setInterval(updateCountdown, 1000 * 30);
+  }
+</script>

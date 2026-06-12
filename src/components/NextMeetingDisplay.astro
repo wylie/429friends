@@ -1,0 +1,63 @@
+---
+import { getNextMeeting, formatMeetingDateTime, getMeetingStatusLabel } from '../lib/meetings';
+
+const meeting = getNextMeeting();
+---
+
+<div class="next-meeting-island card" data-next-meeting={meeting ? '' : 'empty'}>
+  <p class="eyebrow">Next meeting</p>
+  {meeting ? (
+    <>
+      <div class="meeting-card-header">
+        <div>
+          <h3>{formatMeetingDateTime(meeting)}</h3>
+          <p>{meeting.notes}</p>
+        </div>
+        <span class:list={['status-pill', `status-pill--${meeting.status}`]}>{getMeetingStatusLabel(meeting.status)}</span>
+      </div>
+      <dl class="meeting-meta">
+        <div>
+          <dt>Time</dt>
+          <dd>{meeting.time}</dd>
+        </div>
+        <div>
+          <dt>Relative</dt>
+          <dd data-relative-time data-starts-at={meeting.startsAt}>Loading...</dd>
+        </div>
+      </dl>
+    </>
+  ) : (
+    <>
+      <h3>No future meeting is listed yet.</h3>
+      <p>Check back soon for the next gathering date.</p>
+    </>
+  )}
+</div>
+
+<script>
+  const relativeTimeFormat = new Intl.RelativeTimeFormat('en', { numeric: 'auto' });
+
+  for (const element of document.querySelectorAll('[data-relative-time]')) {
+    const startsAt = element.getAttribute('data-starts-at');
+    if (!startsAt) continue;
+
+    const target = new Date(startsAt).getTime();
+    const now = Date.now();
+    const diffMs = target - now;
+    const diffDays = Math.round(diffMs / (1000 * 60 * 60 * 24));
+
+    if (Math.abs(diffDays) >= 1) {
+      element.textContent = relativeTimeFormat.format(diffDays, 'day');
+      continue;
+    }
+
+    const diffHours = Math.round(diffMs / (1000 * 60 * 60));
+    if (Math.abs(diffHours) >= 1) {
+      element.textContent = relativeTimeFormat.format(diffHours, 'hour');
+      continue;
+    }
+
+    const diffMinutes = Math.max(0, Math.round(diffMs / (1000 * 60)));
+    element.textContent = relativeTimeFormat.format(diffMinutes, 'minute');
+  }
+</script>

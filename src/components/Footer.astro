@@ -11,6 +11,19 @@ const year = new Date().getFullYear();
         <span><strong>{siteConfig.name}</strong><small>{siteConfig.tagline}</small></span>
       </a>
       <p>{siteConfig.locationLine}</p>
+      {siteConfig.socialLinks.length > 0 && (
+        <ul class="footer-socials" aria-label="Social links">
+          {siteConfig.socialLinks.map((link) => (
+            <li>
+              {link.href ? (
+                <a href={link.href}>{link.label}</a>
+              ) : (
+                <span>{link.label}: {link.handle}</span>
+              )}
+            </li>
+          ))}
+        </ul>
+      )}
     </div>
     <div>
       <h2>Come as you are</h2>
@@ -25,6 +38,6 @@ const year = new Date().getFullYear();
   </div>
   <div class="container footer-bottom">
     <p>&copy; {year} {siteConfig.name}</p>
-    <p>Gathering outdoors in Hendersonville, NC</p>
+    <p>{siteConfig.address.publicLabel}</p>
   </div>
 </footer>

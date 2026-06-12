@@ -4,11 +4,20 @@ import Hero from '../components/Hero.astro';
 import Section from '../components/Section.astro';
 import ScheduleDisplay from '../components/ScheduleDisplay.astro';
 import Callout from '../components/Callout.astro';
+import NextMeetingDisplay from '../components/NextMeetingDisplay.astro';
+import CountdownToNextMeeting from '../components/CountdownToNextMeeting.astro';
 import { siteConfig } from '../config/site';
 ---
 
 <Layout title="Schedule" description="Upcoming monthly Meeting for Worship dates for 429 Friends in Hendersonville.">
   <Hero compact eyebrow="Upcoming gatherings" title="Second Sundays, through the seasons." description={`We gather monthly in a private Hendersonville backyard. Each meeting lasts ${siteConfig.meeting.duration.toLowerCase()}, with informal conversation afterward.`} imageLabel="Seasonal backyard photo" imageIcon="calendar_month" actions={[{ label: 'Plan your visit', href: '/visit/' }]} />
+
+  <Section eyebrow="Upcoming meetings" title="The next date at a glance" intro="These live panels draw from the same schedule data as the table below.">
+    <div class="meeting-highlight-grid">
+      <NextMeetingDisplay />
+      <CountdownToNextMeeting />
+    </div>
+  </Section>
 
   <Section eyebrow="2026–2027" title="Meeting dates" intro="Dates are maintained here in one shared schedule. Check back before traveling in case weather changes our plans.">
     <ScheduleDisplay />

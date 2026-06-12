@@ -4,7 +4,7 @@ interface Props { items: Item[]; }
 const { items } = Astro.props;
 ---
 
-<div class="faq-list">
+<div class="faq-list" data-faq-accordion>
   {items.map((item, index) => (
     <details class="faq-item" open={index === 0}>
       <summary>
@@ -15,3 +15,18 @@ const { items } = Astro.props;
     </details>
   ))}
 </div>
+
+<script>
+  for (const group of document.querySelectorAll('[data-faq-accordion]')) {
+    const items = Array.from(group.querySelectorAll('details'));
+
+    for (const item of items) {
+      item.addEventListener('toggle', () => {
+        if (!item.open) return;
+        for (const sibling of items) {
+          if (sibling !== item) sibling.open = false;
+        }
+      });
+    }
+  }
+</script>

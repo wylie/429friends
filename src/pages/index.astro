@@ -5,6 +5,8 @@ import Section from '../components/Section.astro';
 import Card from '../components/Card.astro';
 import Callout from '../components/Callout.astro';
 import Gallery from '../components/Gallery.astro';
+import NextMeetingDisplay from '../components/NextMeetingDisplay.astro';
+import CountdownToNextMeeting from '../components/CountdownToNextMeeting.astro';
 import { siteConfig } from '../config/site';
 ---
 
@@ -43,9 +45,16 @@ import { siteConfig } from '../config/site';
     ]} />
   </Section>
 
+  <Section eyebrow="When we meet" title={`${siteConfig.meeting.cadence}, outdoors.`} intro={`${siteConfig.meeting.duration}, followed by ${siteConfig.meeting.communityTime.toLowerCase()}.`}>
+    <div class="meeting-highlight-grid">
+      <NextMeetingDisplay />
+      <CountdownToNextMeeting />
+    </div>
+  </Section>
+
   <Section narrow>
-    <Callout title={`We meet the ${siteConfig.meeting.cadence.toLowerCase()}.`} icon="calendar_month" tone="sun">
-      <p>{siteConfig.meeting.duration}, followed by informal community time. Children are welcome alongside adults.</p>
+    <Callout title="Ready for a first visit?" icon="calendar_month" tone="sun">
+      <p>Children are welcome alongside adults. Bring your own chair, arrive quietly if the meeting has begun, and use the right-side path into the backyard.</p>
       <div class="button-row">
         <a class="button" href="/schedule/">View the schedule<span class="material-symbols-rounded" aria-hidden="true">arrow_forward</span></a>
         <a class="button button--secondary" href="/contact/">Ask a question</a>
