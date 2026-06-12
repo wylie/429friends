@@ -11,16 +11,18 @@ const { items } = Astro.props;
 <div class="gallery">
   {items.map((item, index) => (
     <figure class="gallery-figure">
-      <Image
-        src={item.src}
-        alt={item.alt}
-        class="gallery-image"
-        width={900}
-        widths={[600, 900, 1400]}
-        sizes="(max-width: 45rem) 100vw, (max-width: 64rem) 50vw, 33vw"
-        loading={index === 0 ? 'eager' : 'lazy'}
-        format="webp"
-      />
+      <div class="gallery-media">
+        <Image
+          src={item.src}
+          alt={item.alt}
+          class="gallery-image"
+          width={900}
+          widths={[600, 900, 1400]}
+          sizes="(max-width: 45rem) 100vw, (max-width: 64rem) 50vw, 33vw"
+          loading={index === 0 ? 'eager' : 'lazy'}
+          format="webp"
+        />
+      </div>
       <figcaption>{item.caption}</figcaption>
     </figure>
   ))}
